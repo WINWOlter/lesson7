@@ -10,6 +10,7 @@ class Person:
     self.age = res["results"][0]["dob"]["age"]
     self.phone = res["results"][0]["phone"]
     self.email = res["results"][0]["email"]
+    self.natio = res["results"][0]["natio"]
     self.isMale = res["results"][0]["gender"] == "male"
     
   def print_person(self):
@@ -27,9 +28,14 @@ class Person:
 
 
 
+try:
+  a = input("Скільки працівників потрібно для компанії")
+  a = int(a)
+except:
+  print("Не схоже на цифру")
+  a = input('скільки працівників потрібно для працівників')
+  a = int(a)
 
-a = input("Скільки працівників потрібно для компанії")
-a = int(a)
 
 male = input("Тільки чоловіків?")
 
@@ -42,7 +48,8 @@ if male == "-":
 rabotnici = []
 
 while a != 0:
-  p = Person('fi', gen)
+  n = input("Введіть національність")
+  p = Person(n, gen)
   rabotnici.append(p)
   a -= 1
 
