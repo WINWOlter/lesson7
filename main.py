@@ -2,8 +2,8 @@ import requests
 from colorama import Fore
 
 class Person:
-  def __init__ (self,nat):
-    r = requests.get("https://randomuser.me/api/?nat=" + nat)
+  def __init__ (self, nat, gen):
+    r = requests.get("https://randomuser.me/api/?nat=" + nat + '&gender=' + gen)
     res = r.json()
     self.name = res["results"][0]["name"]["first"]
     self.surename = res["results"][0]["name"]["last"]
@@ -26,18 +26,28 @@ class Person:
 
 
 
-random_person = Person('fi')
-random_person.print_person()
+
 
 a = input("Скільки працівників потрібно для компанії")
 a = int(a)
 
+male = input("Тільки чоловіків?")
+
+gen = "male"
+
+if male == "-":
+  gen = "female"
+
+
 rabotnici = []
 
 while a != 0:
-  p = Person('fi')
-  rabotnici.apppend(p)
+  p = Person('fi', gen)
+  rabotnici.append(p)
   a -= 1
+
+for p in rabotnici:
+  p.print_person()
 
 
 
