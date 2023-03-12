@@ -34,7 +34,10 @@ a = int(a)
 
 rabotnici = []
 
-
+while a != 0:
+  p = Person('fi')
+  rabotnici.apppend(p)
+  a -= 1
 
 
 
